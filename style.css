@@ -94,10 +94,44 @@ header.header {
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(auto, 800px) minmax(0, 1fr);
+    gap: 2rem;
+    padding: 0;
     margin: 0 auto;
-    padding: 60px 0;
+}
+
+.container > * {
+    grid-column: 2;
+    text-align: left;
+}
+
+.container h2 {
+    text-align: center;
+}
+
+.container p {
+    text-align: left;
+    margin: 1.5em 0;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: minmax(1rem, 1fr) minmax(auto, calc(100% - 2rem)) minmax(1rem, 1fr);
+        gap: 1rem;
+    }
+
+    .container p {
+        margin: 1em 0;
+    }
+}
+
+.header,
+.footer,
+.sticky-footer {
+    grid-column: 1 / -1;
+    width: 100%;
 }
 
 section {
@@ -150,6 +184,7 @@ h2::after {
 .comparison-table td {
     padding: 15px;
     border: 1px solid #eee;
+    text-align: left;
 }
 
 .feature-list li, .campaign-list li, .steps-list li {
@@ -159,6 +194,7 @@ h2::after {
     border-radius: 10px;
     box-shadow: 0 2px 4px var(--shadow);
     transition: transform 0.3s ease;
+    text-align: left;
 }
 
 .feature-list li:hover, .campaign-list li:hover, .steps-list li:hover {
@@ -202,4 +238,135 @@ footer.footer {
 .sticky-footer .cpa-button:hover {
     background: var(--accent-hover);
     transform: translateY(-1px);
+}
+
+.faq-item p {
+    text-align: left;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.step-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    background: #BF0000;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-weight: bold;
+}
+
+.step-image {
+    margin: 1rem 0;
+    height: 120px;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* 共通のカードスタイル */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.content-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-2px);
+}
+
+/* 特徴セクション */
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0;
+    list-style: none;
+}
+
+.feature-list li {
+    margin: 0;
+}
+
+/* キャンペーンセクション */
+.campaign-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0;
+    list-style: none;
+}
+
+.campaign-list li {
+    margin: 0;
+}
+
+/* FAQセクション */
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.faq-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .card-grid,
+    .feature-list,
+    .campaign-list,
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+.image-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+}
+
+.image-placeholder img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
